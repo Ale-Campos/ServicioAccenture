@@ -27,7 +27,7 @@ const NuevoClienteModal = ({ open, handleClose, cliente, create, edit }) => {
       setNombre(cliente.nombre);
       setApellido(cliente.apellido);
       setCuitDni(cliente.cuitDni);
-      setRazonSocial(cliente.razonSocial.id);
+      setRazonSocial(cliente.razonSocial);
       setTipoCliente(cliente.tipoCliente.id);
     } else {
       resetStates();
@@ -103,18 +103,12 @@ const NuevoClienteModal = ({ open, handleClose, cliente, create, edit }) => {
           </Form.Group>
           <Form.Group className="mb-3" controlId="razonSocial">
             <Form.Label>Razon social</Form.Label>
-            <Form.Select
+            <Form.Control
               onChange={(e) => setRazonSocial(e.target.value)}
               value={razonSocial || ""}
               required
-            >
-              <option value="">Selecciona una razon social</option>
-              {razonSocialOption?.map((razon) => (
-                <option key={razon.id} value={razon.id}>
-                  {razon.razonSocial}
-                </option>
-              ))}
-            </Form.Select>
+              type="text"
+            />
           </Form.Group>
           <Form.Group className="mb-3" controlId="tipoCliente">
             <Form.Label>Tipo de cliente</Form.Label>

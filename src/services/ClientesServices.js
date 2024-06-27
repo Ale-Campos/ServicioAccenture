@@ -46,10 +46,6 @@ export async function createCliente(
 
   console.log("razonSocial");
   console.log(razonSocial);
-  const razonSocialObj = await getRazonesSociales().then((razones) =>
-    razones.find((razon) => razon.id === parseInt(razonSocial))
-  );
-  console.log(razonSocialObj);
   const tipoClienteObj = await getTipoClientes().then((tipos) =>
     tipos.find((tipo) => tipo.id === parseInt(tipoCliente))
   );
@@ -59,7 +55,7 @@ export async function createCliente(
     nombre,
     apellido,
     cuitDni,
-    razonSocial: razonSocialObj,
+    razonSocial,
     tipoCliente: tipoClienteObj,
   };
   clientes.push(newCliente);
@@ -81,9 +77,6 @@ export async function editCliente(
   }
   const clientes = await getClientes();
   const index = clientes.findIndex((cliente) => cliente.id === id);
-  const razonSocialObj = await getRazonesSociales().then((razones) =>
-    razones.find((razon) => razon.id === parseInt(razonSocial))
-  );
   const tipoClienteObj = await getTipoClientes().then((tipos) =>
     tipos.find((tipo) => tipo.id === parseInt(tipoCliente))
   );
@@ -91,7 +84,7 @@ export async function editCliente(
     id,
     nombre,
     apellido,
-    razonSocial: razonSocialObj,
+    razonSocial,
     cuitDni,
     tipoCliente: tipoClienteObj,
   };
@@ -117,10 +110,7 @@ function generarListadoClientes(clientesObtenidos) {
       id: cliente.id,
       nombre: cliente.nombre,
       apellido: cliente.apellido,
-      razonSocial: {
-        id: cliente.razonSocial.id,
-        razonSocial: cliente.razonSocial.razonSocial,
-      },
+      razonSocial: cliente.razonSocial,
       cuitDni: cliente.cuitDni,
       tipoCliente: {
         id: cliente.tipoCliente.id,
@@ -174,10 +164,7 @@ function getListadoClientesManual() {
       id: 1,
       nombre: "Cliente 1",
       apellido: "Apellido 1",
-      razonSocial: {
-        id: 1,
-        razonSocial: "Razon Social 1",
-      },
+      razonSocial: 'Razon social 1',
       cuitDni: "123456789",
       tipoCliente: {
         id: 1,
@@ -188,10 +175,7 @@ function getListadoClientesManual() {
       id: 2,
       nombre: "Cliente 2",
       apellido: "Apellido 2",
-      razonSocial: {
-        id: 2,
-        razonSocial: "Razon Social 2",
-      },
+      razonSocial: 'Razon social 2',
       cuitDni: "29673451",
       tipoCliente: {
         id: 2,
@@ -202,10 +186,7 @@ function getListadoClientesManual() {
       id: 3,
       nombre: "Cliente 3",
       apellido: "Apellido 3",
-      razonSocial: {
-        id: 1,
-        razonSocial: "Razon Social 1",
-      },
+      razonSocial: 'Razon social 1',
       cuitDni: "218956752",
       tipoCliente: {
         id: 1,
@@ -216,10 +197,7 @@ function getListadoClientesManual() {
       id: 4,
       nombre: "Cliente 4",
       apellido: "Apellido 4",
-      razonSocial: {
-        id: 2,
-        razonSocial: "Razon Social 2",
-      },
+      razonSocial: 'Razon social 1',
       cuitDni: "22172615",
       tipoCliente: {
         id: 2,
@@ -230,10 +208,7 @@ function getListadoClientesManual() {
       id: 5,
       nombre: "Cliente 5",
       apellido: "Apellido 5",
-      razonSocial: {
-        id: 1,
-        razonSocial: "Razon Social 1",
-      },
+      razonSocial: 'Razon social 2',
       cuitDni: "4714232",
       tipoCliente: {
         id: 1,

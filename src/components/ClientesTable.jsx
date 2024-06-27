@@ -76,7 +76,7 @@ const ClientesTable = ({ data, clienteCreate, clienteEdit, clienteDelete }) => {
               <td className="text-center">{row.id}</td>
               <td className="text-center">{row.nombre}</td>
               <td className="text-center">{row.apellido}</td>
-              <td className="text-center">{row.razonSocial.razonSocial}</td>
+              <td className="text-center">{row.razonSocial}</td>
               <td className="text-center">{row.cuitDni}</td>
               <td className="text-center">{row.tipoCliente.tipoCliente}</td>
               <td className="text-center">
